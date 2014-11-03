@@ -2,7 +2,7 @@ Showcase.Routers.Router = Backbone.Router.extend({
   initialize: function(options){
     // for GA
     // this.bind('route', this._pageView);
-    // this.$rootEl = options.$rootEl;
+    this.$rootEl = options.$rootEl;
 
     Showcase.projects = new Showcase.Collections.Projects();
     Showcase.projects.fetch();
@@ -21,7 +21,7 @@ Showcase.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    // ""           : "home",
+    ""           : "home",
     // "how"        : "how",
     // "contact"    : "contact",
     // "terms"      : "terms",
@@ -32,4 +32,25 @@ Showcase.Routers.Router = Backbone.Router.extend({
     // "groups/:id" : "group",
     // "groups"     : "groups",
   },
+
+  home: function() {
+    var SRP = new Showcase.Views.SRPView({collection: Showcase.projects});
+    this._swapView(SRP);
+  },
+
+  _swapView: function(view) {
+    if(this.currentView) {
+      $('body').animate({ scrollTop: 0 }, 0);
+      this.$rootEl.
+      this.currentView.remove();
+    }
+    this.currentView = view;
+    // add this to display fadeIn and fadeOut on view swap
+    // $rootEl.fadeOut(500, function() {
+      this.$rootEl.html(this.currentView.render().$el);
+      // $rootEl.fadeIn(500)
+    // })
+  // })
+
+  }
 });

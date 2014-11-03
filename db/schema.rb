@@ -11,12 +11,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141103011341) do
+ActiveRecord::Schema.define(:version => 20141103165426) do
 
-  create_table "projects", :force => true do |t|
+  create_table "customers", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.boolean  "live"
+    t.string   "region"
+    t.string   "link"
+    t.string   "screenshot"
+    t.string   "vertical"
+    t.string   "industry"
+    t.string   "use_case"
+    t.string   "viz_name"
+    t.integer  "customer_id"
+    t.boolean  "subscription"
+    t.string   "location"
+    t.string   "template_group"
+    t.datetime "record_created"
+    t.datetime "end_date"
+    t.string   "story_slide"
+    t.string   "other"
   end
 
   add_index "projects", ["name"], :name => "index_projects_on_name"

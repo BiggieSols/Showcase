@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    render json: {success: true}
+    # render json: {success: true}
+    # head :ok
   end
 end

@@ -1,6 +1,7 @@
 Showcase::Application.routes.draw do
 
   root to: "static_pages#home"
+  resources :projects, only: [:index]
 
 
   # The priority is based upon order of creation:

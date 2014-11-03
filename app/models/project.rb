@@ -3,5 +3,9 @@ class Project < ActiveRecord::Base
 
   belongs_to :customer
 
+  def customer_name
+    self.customer.name
+  end
+
 
 end

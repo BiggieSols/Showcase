@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141103182147) do
+ActiveRecord::Schema.define(:version => 20141103183043) do
 
   create_table "customers", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20141103182147) do
     t.datetime "end_date"
     t.string   "story_slide"
     t.string   "other"
+    t.string   "template"
   end
 
   add_index "projects", ["name"], :name => "index_projects_on_name"

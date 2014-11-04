@@ -1,13 +1,19 @@
 Showcase.Views.ProjectsView = Backbone.View.extend({
   template: JST['project_tiles'],
+
   initialize: function() {
     this.listenTo(this.collection, "filter-update", this.render);
+    this.currIndex = 0;
+    this.INCREMENT = 40;
   },
+
   render: function() {
     var renderedContent;
     renderedContent = this.template();
     this.$el.html(renderedContent);
-    return this._buildProjects()._renderProjects();
+    return this._buildProjects()
+               ._renderProjects()
+               ._listenForScroll();
   },
 
   _buildProjects: function() {
@@ -15,19 +21,24 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
     that = this;
     this.projectViews = [];
     if ( !this.collection.filteredModels ) this.collection.filteredModels = this.collection.models;
-    this.collection.filteredModels = this.collection.filteredModels.slice(0, 25);
     this.collection.filteredModels.forEach(function(project) {
       that.projectViews.push(new Showcase.Views.ProjectTileView({model: project}));
     });
+    this.currIndex = 0;
     return this;
   },
 
   _renderProjects: function() {
     var node;
     node = this.$(".project-tiles");
-    this.projectViews.forEach(function(projectView) {
+    // console.log("got here");
+    if ( this.currIndex > this.collection.filteredModels.length ) return this;
+
+    this.projectViews.slice(this.currIndex, this.currIndex + this.INCREMENT).forEach(function(projectView) {
+      console.log("appending");
       node.append(projectView.render().$el);
     });
+    this.currIndex += this.INCREMENT;
     return this;
   },
 
@@ -37,5 +48,20 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
     });
 
     Backbone.View.Prototype.remove.call(this);
-  }
+  },
+
+  _listenForScroll: function () {
+    $(window).off("scroll"); // remove past view's listeners
+    var throttledCallback = _.throttle(this._nextPage.bind(this), 1000);
+    $(window).on("scroll", throttledCallback);
+    return this;
+  },
+
+  _nextPage: function () {
+    var that = this;
+    if ($(window).scrollTop() > $(document).height() - $(window).height() - 100) {
+      console.log("scrolled to bottom!");
+      this._renderProjects();
+    }
+  },
 });

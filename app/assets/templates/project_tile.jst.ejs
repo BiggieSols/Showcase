@@ -4,5 +4,13 @@
       <%= this.model.get("viz_name") %>
     </div>
   </div>
+  <div class="info">
+    <div>
+      <% var attributes = ["vertical", "use_case", "template_group"], that=this %>
+      <% attributes.forEach(function(attr) { %>
+        <div><%= attr %>: <%= that.model.get(attr) %></div>
+      <% }) %>
+    </div>
+  </div>
 
 </div>

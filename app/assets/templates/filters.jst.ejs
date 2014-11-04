@@ -29,11 +29,29 @@ filters go here
 
   <label for="project-name-select">Project Name</label>
   <select multiple id="project-name-select">
-    <% projects.slice(0, 20).forEach(function(model) { %>
+    <% projects.forEach(function(model) { %>
       <option value="<%= model.get("viz_name") %>">
         <%= model.get("viz_name") %>
       </option>
     <% }) %>
   </select>
+
+  <label for="template-group-select">Template Type</label>
+  <select multiple id="template-group-select">
+    <option value="Mosaic">Mosaic</option>
+    <option value="Expressions">Expressions</option>
+    <option value="Maps">Maps</option>
+    <option value="Streams">Streams</option>
+    <option value="Leaderboards">Leaderboards</option>
+    <option value="Counters">Counters</option>
+    <option value="Polls">Polls</option>
+    <option value="Galleries">Galleries</option>
+    <option value="Social Hub">Hub</option>
+    <option value="Flock to Unlock">Unlock</option>
+    <option value="Counter">Counter</option>
+    <option value="Quiz">Quiz</option>
+    <option value="Q & A">Q&A</option>
+  </select>
+
 
 </form>

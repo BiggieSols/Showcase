@@ -36,6 +36,10 @@ Showcase.Views.FiltersView = Backbone.View.extend({
     return this._filter("#vertical-select", "vertical");
   },
 
+  _filterTemplateGroup: function() {
+    return this._filter("#template-group-select", "template_group");
+  },
+
   _filterProjectName: function() {
     return this._filter("#project-name-select", "viz_name");
   },
@@ -45,31 +49,31 @@ Showcase.Views.FiltersView = Backbone.View.extend({
     this._filterVertical()
         ._filterUseCase()
         ._filterProjectName()
+        ._filterTemplateGroup()
         .collection.trigger("filter-update");
     return this;
   },
 
   render: function() {
-    console.log("rendering filters");
-    var renderedContent = this.template({
+    var defaultOpts, renderedContent;
+    renderedContent = this.template({
       projects: this.collection.models
     });
 
     this.$el.html(renderedContent);
-    this.$("#vertical-select").select2({
+
+    defaultOpts = {
       placeholder: "Industry",
       allowClear: true
-    });
-    this.$("#use-case-select").select2({
-      placeholder: "Use Case",
-      allowClear: true
-    });
+    };
 
-    this.$("#project-name-select").select2({
-      placeholder: "Project Name",
-      allowClear: true,
+    this.$("#vertical-select").select2(defaultOpts);
+    this.$("#use-case-select").select2(defaultOpts);
+    this.$("#template-group-select").select2(defaultOpts);
+
+    this.$("#project-name-select").select2(_.extend(defaultOpts, {
       minimumInputLength: 3
-    });
+    }));
     return this;
   }
 });

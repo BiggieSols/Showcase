@@ -3,9 +3,6 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.collection, "filter-update", this.render);
   },
-  asdf: function() {
-    alert("filter notification received");
-  },
   render: function() {
     var renderedContent;
     renderedContent = this.template();

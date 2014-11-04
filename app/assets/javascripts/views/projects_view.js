@@ -4,7 +4,7 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.collection, "filter-update", this.render);
     this.currIndex = 0;
-    this.INCREMENT = 40;
+    this.INCREMENT = 25;
   },
 
   render: function() {
@@ -52,7 +52,7 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
 
   _listenForScroll: function () {
     $(window).off("scroll"); // remove past view's listeners
-    var throttledCallback = _.throttle(this._nextPage.bind(this), 1000);
+    var throttledCallback = _.throttle(this._nextPage.bind(this), 100);
     $(window).on("scroll", throttledCallback);
     return this;
   },

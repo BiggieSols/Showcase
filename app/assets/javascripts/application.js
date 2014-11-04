@@ -15,6 +15,7 @@
 //= require jquery.serializejson.min
 //= require underscore
 //= require backbone
+//= require select2
 //= require showcase
 //= require_tree ../templates
 //= require_tree ./models

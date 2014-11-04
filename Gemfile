@@ -30,6 +30,7 @@ gem 'jbuilder'
 
 gem 'backbone-on-rails'
 gem 'less-rails-bootstrap'
+gem 'select2-rails'
 
 # Use unicorn as the app server
 # gem 'unicorn'

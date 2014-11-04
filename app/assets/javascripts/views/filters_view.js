@@ -2,7 +2,7 @@ Showcase.Views.FiltersView = Backbone.View.extend({
   template: JST['filters'],
 
   events: {
-    "click select" : "_applyFilters"
+    "change select" : "_applyFilters"
   },
 
   // selector: "#use-case-select"
@@ -11,7 +11,10 @@ Showcase.Views.FiltersView = Backbone.View.extend({
   _filter: function(selector, attribute) {
     var userSelection;
     userSelection = $(selector).val();
-    console.log("user selection is " + userSelection)
+
+    console.log("user selection is " + userSelection);
+
+    if(userSelection === null) return this;
     userSelection = _.map(userSelection, function( selector ) { return selector.toLowerCase(); });
     this.collection.filteredModels = this.collection.filteredModels.filter(function(model) {
       if( model && model.get(attribute) ) {
@@ -33,15 +36,40 @@ Showcase.Views.FiltersView = Backbone.View.extend({
     return this._filter("#vertical-select", "vertical");
   },
 
+  _filterProjectName: function() {
+    return this._filter("#project-name-select", "viz_name");
+  },
+
   _applyFilters: function() {
     this.collection.filteredModels = _.clone(this.collection);
-    this._filterVertical()._filterUseCase().collection.trigger("filter-update");
+    this._filterVertical()
+        ._filterUseCase()
+        ._filterProjectName()
+        .collection.trigger("filter-update");
     return this;
   },
 
   render: function() {
-    var renderedContent = this.template();
+    console.log("rendering filters");
+    var renderedContent = this.template({
+      projects: this.collection.models
+    });
+
     this.$el.html(renderedContent);
+    this.$("#vertical-select").select2({
+      placeholder: "Industry",
+      allowClear: true
+    });
+    this.$("#use-case-select").select2({
+      placeholder: "Use Case",
+      allowClear: true
+    });
+
+    this.$("#project-name-select").select2({
+      placeholder: "Project Name",
+      allowClear: true,
+      minimumInputLength: 3
+    });
     return this;
   }
 });

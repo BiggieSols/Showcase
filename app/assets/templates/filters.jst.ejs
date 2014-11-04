@@ -3,30 +3,37 @@ filters go here
 <form id="filters">
   <label for="vertical-select">Vertical</label>
   <select multiple id="vertical-select">
-    <option selected value="sports">Sports</option>
-    <option selected value="brand">Brand</option>
-    <option selected value="media">Media</option>
-    <option selected value="partner">Partner</option>
+    <option value="sports">Sports</option>
+    <option value="brand">Brand</option>
+    <option value="media">Media</option>
+    <option value="partner">Partner</option>
   </select>
 
   <label for="use-case-select">Use Case</label>
   <select multiple id="use-case-select">
-    <option selected value="marketing promotion">Marketing Promotion</option>
-    <option selected value="second screen">Second Screen</option>
-    <option selected value="sponsorship">Sponsorship</option>
-    <option selected value="evergreen destination">Evergreen Destination</option>
-    <option selected value="cause marketing">Cause Marketing</option>
-    <option selected value="event engagement">Event Engagement</option>
-    <option selected value="contest">Contest</option>
-    <option selected value="sweepstakes">Sweepstakes</option>
-    <option selected value="event promotion">Event Promotion</option>
-    <option selected value="product promotion">Product Promotion</option>
-    <option selected value="product launch">Product Launch</option>
-    <option selected value="rebranding">Rebranding</option>
-    <option selected value="live q&a">Live Q&A</option>
-    <option selected value="consent">Consent</option>
+    <option value="marketing promotion">Marketing Promotion</option>
+    <option value="second screen">Second Screen</option>
+    <option value="sponsorship">Sponsorship</option>
+    <option value="evergreen destination">Evergreen Destination</option>
+    <option value="cause marketing">Cause Marketing</option>
+    <option value="event engagement">Event Engagement</option>
+    <option value="contest">Contest</option>
+    <option value="sweepstakes">Sweepstakes</option>
+    <option value="event promotion">Event Promotion</option>
+    <option value="product promotion">Product Promotion</option>
+    <option value="product launch">Product Launch</option>
+    <option value="rebranding">Rebranding</option>
+    <option value="live q&a">Live Q&A</option>
+    <option value="consent">Consent</option>
   </select>
 
-  <label for="project-name">Project Name</label>
-  <input type="text" placeholder="Project name..." id="project-name">
+  <label for="project-name-select">Project Name</label>
+  <select multiple id="project-name-select">
+    <% projects.slice(0, 20).forEach(function(model) { %>
+      <option value="<%= model.get("viz_name") %>">
+        <%= model.get("viz_name") %>
+      </option>
+    <% }) %>
+  </select>
+
 </form>

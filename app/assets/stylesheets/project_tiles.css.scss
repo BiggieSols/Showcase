@@ -1,0 +1,31 @@
+.project-tile {
+  height: 200px;
+  width: 200px;
+  margin: 5px;
+  border-radius: 5px;
+
+  background-color: white;
+  float: left;
+  transform: scale(0);
+  transition: transform 0.2s ease-out;
+  box-sizing: border-box;
+  box-shadow: 0 0 3px black;
+
+  .title-wrapper {
+    text-align: center;
+    padding: 0 10px;
+    // font-size: 1.1em;
+    overflow: hidden;
+    // text-overflow: ellipsis;
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
+
+    .title {
+      display: table-cell;
+      vertical-align: middle;
+      height: 55px;
+      border-bottom: 2px solid gray;
+    }
+  }
+}

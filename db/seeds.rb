@@ -12,13 +12,15 @@ require 'date'
 
 
 rows = CSV.read("db/test_dataset.csv")
+# change column names to match
+# status (live/disabled) becomes Live (boolean)
+# project / subscription becomes Subscription (boolean)
+# 
 
 headers = rows[0]
 headers[0] = "live"
 
 headers.map! { |header| header.gsub(/\_$/, "").split(" ").join("_").downcase.to_sym }
-
-# :live, :region, :link, :screenshot, :vertical, :industry, :use_case, :viz_name, :customer_id, :subscription, :location, :template_group, :record_created, :end_date, :story_slide, :other
 
 zipped_rows = []
 rows[1..-1].each do |row|

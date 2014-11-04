@@ -6,7 +6,8 @@ window.Showcase = {
   initialize: function() {
     new Showcase.Routers.Router({$rootEl: $('#content')});
     Backbone.history.start();
-  }
+  },
+  dispatcher: _.clone(Backbone.Events)
 };
 
 $(document).ready(function(){

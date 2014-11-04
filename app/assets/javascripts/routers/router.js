@@ -5,7 +5,7 @@ Showcase.Routers.Router = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
 
     Showcase.projects = new Showcase.Collections.Projects();
-    Showcase.projects.fetch();
+    // Showcase.projects.fetch();
 
     // TeamProfile.currentUser = new TeamProfile.Models.User({id: "current"});
     // TeamProfile.dummyUser   = new TeamProfile.Models.User({id: "dummy"});
@@ -34,8 +34,17 @@ Showcase.Routers.Router = Backbone.Router.extend({
   },
 
   home: function() {
-    var SRP = new Showcase.Views.SRPView({collection: Showcase.projects});
-    this._swapView(SRP);
+    var srpView, tat;
+    srpView = new Showcase.Views.SRPView({collection: Showcase.projects});
+    that    = this;
+    // TODO: only require fetch on first pageload, then store results.
+    Showcase.projects.fetch({
+      success: function() {
+        that._swapView(srpView);    
+      }
+    });
+    window.srpView = srpView;
+    
   },
 
   _swapView: function(view) {

@@ -11,7 +11,7 @@ require 'csv'
 require 'date'
 
 
-rows = CSV.read("db/test_dataset.csv")
+rows = CSV.read("db/test_dataset_v2.csv")
 # change column names to match
 # status (live/disabled) becomes Live (boolean)
 # project / subscription becomes Subscription (boolean)
@@ -25,12 +25,18 @@ headers.map! { |header| header.gsub(/\_$/, "").split(" ").join("_").downcase.to_
 zipped_rows = []
 rows[1..-1].each do |row|
   curr_row                  = Hash[headers.zip(row)]
-  record_created            = curr_row[:record_created]
-  end_date                  = curr_row[:end_date]
   customer_name             = curr_row[:customer_name]
   customer                  = Customer.find_by_name(customer_name)
+
+  record_created            = curr_row[:record_created]
+  end_date                  = curr_row[:end_date]
+  record_created            = nil if record_created && record_created.downcase == "unknown"
+  end_date                  = nil if end_date && end_date.downcase == "unknown"
+  puts "start date is #{record_created}"
+  puts "end date is #{end_date}"
   curr_row[:record_created] = DateTime.strptime(record_created, '%m/%d/%y') if record_created
   curr_row[:end_date]       = DateTime.strptime(end_date, '%m/%d/%y')  if end_date
+
 
   customer ||= Customer.create(name: customer_name)
   puts "customer is #{customer.name}"

@@ -12,14 +12,11 @@ Showcase.Views.FiltersView = Backbone.View.extend({
     // move logic to model
     console.log(selectedVerticals);
     this.collection.filteredModels = this.collection.filter(function(model) {
-      
-      if(model) {
-        console.log(model.get("vertical"));
+      if(model && model.get("vertical")) {
         return _.contains(selectedVerticals, model.get("vertical").toLowerCase());
       } 
     });
     console.log(this.collection.filteredModels);
-    console.log("triggering things");
     this.collection.trigger("filter-update");
   },
 

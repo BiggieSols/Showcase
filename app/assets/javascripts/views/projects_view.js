@@ -18,6 +18,7 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
     that = this;
     this.projectViews = [];
     if ( !this.collection.filteredModels ) this.collection.filteredModels = this.collection.models;
+    this.collection.filteredModels = this.collection.filteredModels.slice(0, 25);
     this.collection.filteredModels.forEach(function(project) {
       that.projectViews.push(new Showcase.Views.ProjectTileView({model: project}));
     });

@@ -41,7 +41,6 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
     if ( this.currIndex > this.collection.filteredModels.length ) return this;
 
     this.projectViews.slice(this.currIndex, this.currIndex + this.INCREMENT).forEach(function(projectView) {
-      console.log("appending");
       node.append(projectView.render().$el);
     });
     this.currIndex += this.INCREMENT;
@@ -57,7 +56,7 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
   },
 
   _listenForScroll: function () {
-    $(window).off("scroll"); // remove past view's listeners
+    // $(window).off("scroll"); // remove past view's listeners
     var throttledCallback = _.throttle(this._nextPage.bind(this), 100);
     $(window).on("scroll", throttledCallback);
     return this;

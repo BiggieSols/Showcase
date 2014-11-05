@@ -28,6 +28,27 @@ Showcase.Views.FiltersView = Backbone.View.extend({
     return this;
   },
 
+  _listenForScroll: function() {
+    var filterTop;
+
+    var throttledCallback = _.throttle(function() {
+      var diff, $node;
+      $node     = $(".filters");
+      filterTop = filterTop || $node.offset().top;
+      diff      = filterTop - $(window).scrollTop();
+
+      if(diff < 0 && !$node.hasClass("fixed-top")) {
+        $node.addClass("fixed-top");
+        $(".project-tiles").css("margin-top", $node.height());
+      } else if (diff > 0 && $node.hasClass("fixed-top")) {
+        $(".project-tiles").css("margin-top", 0);
+        $node.removeClass("fixed-top");
+      }
+    }, 200);
+    $(window).off("scroll", throttledCallback);
+    $(window).on("scroll", throttledCallback);
+  },
+
   _filterUseCase: function() {
     return this._filter("#use-case-select", "use_case");
   },
@@ -51,6 +72,7 @@ Showcase.Views.FiltersView = Backbone.View.extend({
         ._filterProjectName()
         ._filterTemplateGroup()
         .collection.trigger("filter-update");
+    $(window).scrollTop(0);
     return this;
   },
 
@@ -73,7 +95,7 @@ Showcase.Views.FiltersView = Backbone.View.extend({
     this.$("#project-name-select").select2(_.extend(defaultOpts, {
       minimumInputLength: 3
     }));
-
+    this._listenForScroll();
     return this;
   }
 });

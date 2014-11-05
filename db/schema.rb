@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141104043729) do
+ActiveRecord::Schema.define(:version => 20141105213646) do
 
   create_table "customers", :force => true do |t|
     t.string   "name"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20141104043729) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.boolean  "live"
     t.string   "region"
     t.text     "link"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20141104043729) do
     t.string   "story_slide"
     t.string   "other"
     t.string   "template"
+    t.boolean  "visible",        :default => true
   end
 
   add_index "projects", ["name"], :name => "index_projects_on_name"

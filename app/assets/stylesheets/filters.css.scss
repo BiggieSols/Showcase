@@ -1,5 +1,8 @@
 .filters {
-    padding-top: 20px;
+    background-color: #ddd;
+    color: #333;
+    padding: 20px 0 20px 0;
+    margin-bottom: 20px;
 }
 
 .select2-container {
@@ -18,10 +21,11 @@
 
 .fixed-top {
   position: fixed;
+  color: #333;
   top: 0;
   padding-top: 17px;
-  background-color: white;
-  z-index: 1; 
+  background-color: #ddd;
+  z-index: 1;
   box-shadow: 0 0 2px #ddd;
-  background-color: #333;
+  width: 100%;
 }

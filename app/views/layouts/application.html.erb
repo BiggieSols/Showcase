@@ -3,11 +3,13 @@
 <head>
   <title>Showcase</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <script src="//use.typekit.net/vfp0xue.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+
 <div id="content">
   <%= yield %>
 </div>

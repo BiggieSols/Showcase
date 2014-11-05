@@ -5,7 +5,8 @@
   border-radius: 5px;
 
   background-color: white;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
   transform: scale(0);
   transition: transform 0.2s ease-out;
   box-sizing: border-box;

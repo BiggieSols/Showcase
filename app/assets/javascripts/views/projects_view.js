@@ -13,7 +13,8 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
     this.$el.html(renderedContent);
     return this._buildProjects()
                ._renderProjects()
-               ._listenForScroll();
+               ._listenForScroll()
+               ._updateResultsCount();
   },
 
   _buildProjects: function() {
@@ -24,8 +25,13 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
     this.collection.filteredModels.forEach(function(project) {
       that.projectViews.push(new Showcase.Views.ProjectTileView({model: project}));
     });
+    if(this.collection.filteredModels.length === 0) this._renderNoResults();
     this.currIndex = 0;
     return this;
+  },
+
+  _renderNoResults: function() {
+    this.$(".num-results").html("Sorry, no results match your filters!");
   },
 
   _renderProjects: function() {
@@ -63,5 +69,10 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
       console.log("scrolled to bottom!");
       this._renderProjects();
     }
+  },
+
+  _updateResultsCount: function() {
+    this.$(".num-results").html(this.collection.filteredModels.length);
+    return this;
   },
 });

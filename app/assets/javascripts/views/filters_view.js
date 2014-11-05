@@ -63,7 +63,6 @@ Showcase.Views.FiltersView = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     defaultOpts = {
-      placeholder: "Industry",
       allowClear: true
     };
 
@@ -74,6 +73,7 @@ Showcase.Views.FiltersView = Backbone.View.extend({
     this.$("#project-name-select").select2(_.extend(defaultOpts, {
       minimumInputLength: 3
     }));
+
     return this;
   }
 });

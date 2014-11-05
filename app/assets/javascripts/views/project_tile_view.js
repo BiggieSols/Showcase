@@ -7,7 +7,7 @@ Showcase.Views.ProjectTileView = Backbone.View.extend({
     var that = this;
     setTimeout(function() {
       that.$el.css({transform: "scale(1)"});
-    }, 200);
+    }, Math.random() * 400);
     return this;
   }
 });

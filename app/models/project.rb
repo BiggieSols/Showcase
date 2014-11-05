@@ -6,6 +6,4 @@ class Project < ActiveRecord::Base
   def customer_name
     self.customer.name
   end
-
-
 end

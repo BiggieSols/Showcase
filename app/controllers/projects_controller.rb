@@ -19,11 +19,22 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    puts "\n"*5
-    puts params
-    puts "\n"*5
-    head :ok
     @project = Project.find(params[:project][:id])
+    params[:project].delete("created_at")
+    params[:project].delete("updated_at")
+
+    existing_attrs = @project.attributes
+
+    existing_attrs.each do |k, v|
+      puts "#{k}: #{params[:project][k]}"
+      params[:project].delete(k) if v == params[:project][k]
+    end
+
+    puts "\n"*5
+    puts "updating params below"
+    puts params[:project]
+    puts "\n"*5
+
     if @project.update_attributes(params[:project])
       render json: @project
     else

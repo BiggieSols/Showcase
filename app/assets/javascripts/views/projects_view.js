@@ -37,7 +37,6 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
   _renderProjects: function() {
     var node;
     node = this.$(".project-tiles");
-    // console.log("got here");
     if ( this.currIndex > this.collection.filteredModels.length ) return this;
 
     this.projectViews.slice(this.currIndex, this.currIndex + this.INCREMENT).forEach(function(projectView) {
@@ -65,7 +64,6 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
   _nextPage: function () {
     var that = this;
     if ($(window).scrollTop() > $(document).height() - $(window).height() - 100) {
-      console.log("scrolled to bottom!");
       this._renderProjects();
     }
   },

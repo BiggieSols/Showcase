@@ -12,8 +12,6 @@ Showcase.Views.FiltersView = Backbone.View.extend({
     var userSelection;
     userSelection = $(selector).val();
 
-    console.log("user selection is " + userSelection);
-
     if(userSelection === null) return this;
     userSelection = _.map(userSelection, function( selector ) { return selector.toLowerCase(); });
     this.collection.filteredModels = this.collection.filteredModels.filter(function(model) {

@@ -1,8 +1,14 @@
-<div class="title-wrapper">
+<div class="tile-img">
+  <!-- <img src="http://placepuppy.it/250/130"> -->
+  <% if(this.model.get("screenshot")) { %>
+  <img src="<%= this.model.get('screenshot')%>">
+  <% } else { %>
+    <img src="default_screenshot.png">
+  <% } %>
+</div>
   <div class="title">
     <%= this.model.get("viz_name") %>
   </div>
-</div>
 <div class="info">
   <div>
     <% var attributes = ["vertical", "use_case", "template_group"], that=this %>

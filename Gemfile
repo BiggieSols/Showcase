@@ -22,6 +22,9 @@ end
 
 gem 'jquery-rails'
 
+gem "less-rails"
+gem "twitter-bootstrap-rails"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0', reqiure: 'bcrypt'
 
@@ -29,7 +32,7 @@ gem 'jquery-rails'
 gem 'jbuilder'
 
 gem 'backbone-on-rails'
-gem 'less-rails-bootstrap'
+# gem 'less-rails-bootstrap'
 gem 'select2-rails'
 
 # Use unicorn as the app server

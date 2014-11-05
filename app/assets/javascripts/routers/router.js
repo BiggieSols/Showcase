@@ -38,7 +38,7 @@ Showcase.Routers.Router = Backbone.Router.extend({
   },
 
   home: function() {
-    var srpView, tat;
+    var srpView, that;
     srpView = new Showcase.Views.SRPView({collection: Showcase.projects});
     that    = this;
     // TODO: only require fetch on first pageload, then store results.

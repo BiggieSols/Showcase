@@ -5,24 +5,12 @@ Showcase.Routers.Router = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
 
     Showcase.projects = new Showcase.Collections.Projects();
-    // Showcase.projects.fetch();
 
-    // TeamProfile.currentUser = new TeamProfile.Models.User({id: "current"});
-    // TeamProfile.dummyUser   = new TeamProfile.Models.User({id: "dummy"});
-    // TeamProfile.groups      = new TeamProfile.Collections.Groups();
-
-    // TeamProfile.currentUser.fetch({
-      // success: function() {
-        // topNavSearchView = new TeamProfile.Views.TopNavUserSearchView({model: TeamProfile.currentUser});
-        // $('#user-search-nav').html(topNavSearchView.render().$el);
-      // }
-    // });
-    // TeamProfile.dummyUser.fetch();
   },
 
   routes: {
     ""                : "home",
-    "projects/1/edit" : "editProject",
+    "projects/:id/edit" : "editProject",
     "projects/:id"    : "project",
     // "how"        : "how",
     // "contact"    : "contact",
@@ -33,6 +21,20 @@ Showcase.Routers.Router = Backbone.Router.extend({
     // "assessment" : "quiz",
     // "groups/:id" : "group",
     // "groups"     : "groups",
+  },
+
+  editProject: function(id) {
+    var that, project, editProjectView;
+    that            = this;
+    project         = new Showcase.Models.Project({id: id});
+    editProjectView = new Showcase.Views.EditProjectView({model: project});
+    window.project  = project;
+
+    project.fetch({
+      success: function() {
+        that._swapView(editProjectView);
+      }
+    });
   },
 
   home: function() {
@@ -50,18 +52,17 @@ Showcase.Routers.Router = Backbone.Router.extend({
   },
 
   _swapView: function(view) {
+    var that = this;
     if(this.currentView) {
+      console.log("current view identified");
       $('body').animate({ scrollTop: 0 }, 0);
-      this.$rootEl.
       this.currentView.remove();
     }
     this.currentView = view;
     // add this to display fadeIn and fadeOut on view swap
-    // $rootEl.fadeOut(500, function() {
-      this.$rootEl.html(this.currentView.render().$el);
-      // $rootEl.fadeIn(500)
-    // })
-  // })
-
+    this.$rootEl.fadeOut(200, function() {
+      that.$rootEl.html(view.render().$el);
+      that.$rootEl.fadeIn(200);
+    });
   }
 });

@@ -51,7 +51,7 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
       view.remove();
     });
 
-    Backbone.View.Prototype.remove.call(this);
+    Backbone.View.prototype.remove.call(this);
   },
 
   _listenForScroll: function () {

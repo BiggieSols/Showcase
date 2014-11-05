@@ -21,8 +21,9 @@ Showcase.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    ""            : "home",
-    "projects/:id": "project"
+    ""                : "home",
+    "projects/1/edit" : "editProject",
+    "projects/:id"    : "project",
     // "how"        : "how",
     // "contact"    : "contact",
     // "terms"      : "terms",

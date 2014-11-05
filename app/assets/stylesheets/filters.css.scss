@@ -5,6 +5,10 @@
 .select2-container {
   width: 300px;
   max-width: 100%;
+
+  .select2-choices {
+    border-radius: 5px;
+  }
 }
 
 .form-group {
@@ -18,4 +22,6 @@
   padding-top: 17px;
   background-color: white;
   z-index: 1; 
+  box-shadow: 0 0 2px #ddd;
+  background-color: #333;
 }

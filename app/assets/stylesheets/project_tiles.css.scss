@@ -11,7 +11,7 @@
   display: inline-block;
   vertical-align: top;
   transform: scale(0);
-  transition: transform 0.2s ease-out;
+  transition: 0.2s ease-out;
   box-sizing: border-box;
   border: 1px solid #ccc;
   overflow: hidden;
@@ -58,6 +58,8 @@
     letter-spacing: -.5px;
     text-transform: uppercase;
     margin: 12px 10px 10px 15px;
+    box-sizing: border-box;
+    height: 50px;
   }
 
   .info {
@@ -69,12 +71,35 @@
     div{
       margin-bottom: 2px;
     }
+
+    .project-attribute {
+      font-size: 0.8em;
+      font-weight: bold;
+
+      .project-attribute-result {
+        font-weight: normal;
+
+        &.live {
+          color: green;
+          font-weight: bold;
+        }
+
+        &.not-live {
+          color: red;
+          font-weight: bold;
+        }
+      }
+    }
   }
 
-  .edit-link {
+  .edit-link, .view-live-btn {
     position: absolute;
     right: 0;
     bottom: 0;
-    margin: 10px;
+    margin: 9px;
+
+    button {
+      border: none;
+    }
   }
 }

@@ -1,6 +1,42 @@
 Showcase.Views.ProjectsView = Backbone.View.extend({
   template: JST['project_tiles'],
 
+  events: {
+    "dragstart .project-tile":"handleDragStart",
+    "drop .project-tile":"handleDragDrop",
+    "dragend .project-tile":"handleDragEnd",
+
+  },
+
+  handleDragStart: function(e) {
+    var tile;
+    tile = $(e.currentTarget);
+    console.log("drag start");
+    tile.css("transform", "scale(0)");
+    // e.dataTransfer.setData("text", "testing");
+    // console.log(e.dataTransfer);
+    // console.log(e.dataTransfer)
+    // tile.css("display","none");
+  },
+
+  handleDragDrop: function(e) {
+    var tile;
+    tile = $(e.currentTarget);
+    console.log("dropping");
+    // tile.css("display","none");
+  },
+
+  handleDragEnd: function(e) {
+    var tile;
+    tile = $(e.currentTarget);
+    console.log("dragging ended");
+    $(e.currentTarget).css("transform", "scale(1)");
+    console.log("text on drop is " + e.dataTransfer.getData("text"));
+    // window.tile = tile;
+    // console.log(e.dataTransfer)
+    // tile.css("display","none");
+  },
+
   initialize: function() {
     this.listenTo(this.collection, "filter-update", this.render);
     this.currIndex = 0;
@@ -23,7 +59,9 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
     this.projectViews = [];
     if ( !this.collection.filteredModels ) this.collection.filteredModels = this.collection.models;
     this.collection.filteredModels.forEach(function(project) {
-      that.projectViews.push(new Showcase.Views.ProjectTileView({model: project}));
+      if(project.get("visible")) {
+        that.projectViews.push(new Showcase.Views.ProjectTileView({model: project}));
+      } 
     });
     if(this.collection.filteredModels.length === 0) this._renderNoResults();
     this.currIndex = 0;

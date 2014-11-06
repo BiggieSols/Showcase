@@ -1,6 +1,15 @@
 Showcase.Views.ProjectTileView = Backbone.View.extend({
   template: JST['project_tile'],
-  className: "project-tile",
+  attributes: {
+    class: "project-tile",
+    draggable: true
+  },
+  events: {
+    "dragstart .project-tile":"test"
+  },
+  test: function() {
+    alsert("dragging started");
+  },
   render: function() {
     var renderedContent = this.template({
       tile: this.model,

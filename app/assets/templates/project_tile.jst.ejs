@@ -3,18 +3,27 @@
   <% if(this.model.get("screenshot")) { %>
   <img src="<%= this.model.get('screenshot')%>">
   <% } else { %>
-    <img src="default_screenshot.png">
+  <img src="default_screenshot.png">
   <% } %>
 </div>
-  <div class="title">
-    <%= this.model.get("viz_name") %>
-  </div>
+<div class="title">
+  <%= this.model.get("viz_name") %>
+</div>
 <div class="info">
-  <div>
-    <% var attributes = ["vertical", "use_case", "template_group"], that=this %>
-    <% attributes.forEach(function(attr) { %>
-    <div><%= attr %>: <%= that.model.get(attr) %></div>
-    <% }) %>
+  <div class="project-attribute">Status: 
+    <span class="project-attribute-result <%= this.model.get("live") ? "live" : "not-live"%>">
+      <%= this.model.get("live") ? "Live" : "Disabled" %>
+    </span>
+  </div>
+  <div class="project-attribute">Vertical: 
+    <span class="project-attribute-result">
+      <%= this.model.get("vertical") %>
+    </span>
+  </div>
+  <div class="project-attribute">Use Case: 
+    <span class="project-attribute-result">
+      <%= this.model.get("use_case") %>
+    </span>
   </div>
 </div>
 <% if(adminMode) { %>
@@ -23,4 +32,10 @@
     <i class="icon-pencil"></i> edit
   </a>
 </div>
-<% } %>
+<% } else if(this.model.get("live")){ %>
+  <div class="view-live-btn">
+  <a href="<%= this.model.get("link") %>" target="_blank">
+    <button class="btn btn-warning">View it Live</button>
+  </a>
+</div>
+<% }%>

@@ -5,41 +5,41 @@
 
 <% }); %>
 
-<div class="container-fluid">
+<div class="edit-container container-fluid">
   <div class="row">
-    <form>
+    <form id="edit-project-form">
       <div class="form-group">
-        <label for="project-name">Title</label>
-        <input type="text" class="form-control" value="<%= project.get("viz_name") %>" id="project-name">
+        <label for="viz_name">Title</label>
+        <input type="text" class="form-control" value="<%= project.get("viz_name") %>" id="viz_name">
       </div>
 
       <div class="form-group" >
-        <label for="project-visible">Display This Project?</label>
-        <select class="form-control" id="project-visible">
+        <label for="visible">Display This Project?</label>
+        <select class="form-control" id="visible">
           <option value="true" <%= project.get("visible") ? "selected" : ""%>>Yes</option>
           <option value="false" <%= !project.get("visible") ? "selected" : ""%> >No</option>
         </select>
       </div>
 
       <div class="form-group" >
-        <label for="project-live">Live Status</label>
-        <select class="form-control" id="project-live">
+        <label for="live">Live Status</label>
+        <select class="form-control" id="live">
           <option value="true" <%= project.get("live") ? "selected" : ""%>>Live</option>
           <option value="false" <%= !project.get("live") ? "selected" : ""%> >Disabled</option>
         </select>
       </div>
 
       <div class="form-group" >
-        <label for="project-subscription">Project / Subscription</label>
-        <select class="form-control" id="project-subscription">
+        <label for="subscription">Project / Subscription</label>
+        <select class="form-control" id="subscription">
           <option value="true" <%= project.get("subscription") ? "selected" : ""%>>Subscription</option>
           <option value="false" <%= !project.get("subscription") ? "selected" : ""%> >Project</option>
         </select>
       </div>
 
       <div class="form-group" >
-        <label for="project-region">Region</label>
-        <select class="form-control" id="project-region">
+        <label for="region">Region</label>
+        <select class="form-control" id="region">
           <option value="EMEA" <%= (project.get("region") === "EMEA") ? "selected" : ""%>>EMEA</option>
           <option value="NA East" <%= (project.get("region") === "NA East") ? "selected" : ""%>>NA East</option>
           <option value="NA Central" <%= (project.get("region") === "NA Central") ? "selected" : ""%>>NA Central</option>
@@ -54,13 +54,13 @@
       </div>
 
       <div class="form-group" >
-        <label for="project-link">Link</label>
-        <input type="text" class="form-control" value="<%= project.get("link") %>" id="project-link">
+        <label for="link">Link</label>
+        <input type="text" class="form-control" value="<%= project.get("link") %>" id="link">
       </div>
 
       <div class="form-group" >
-        <label for="project-vertical">Vertical</label>
-        <select class="form-control" id="project-vertical">
+        <label for="vertical">Vertical</label>
+        <select class="form-control" id="vertical">
           <option value="sports" <%= project.get("vertical").toLowerCase() === "sports" ? "selected" : ""%> >Sports</option>
           <option value="brand" <%= project.get("vertical").toLowerCase() === "brand" ? "selected" : ""%>>Brand</option>
           <option value="media" <%= project.get("vertical").toLowerCase() === "media" ? "selected" : ""%>>Media</option>
@@ -69,17 +69,51 @@
       </div>
 
       <div class="form-group" >
-        <label for="project-location">Location</label>
-        <select class="form-control" id="project-location">
+        <label for="location">Location</label>
+        <select class="form-control" id="location">
           <option value="digital" <%= project.get("location").toLowerCase() === "digital" ? "selected" : ""%> >Digital</option>
           <option value="on-air" <%= project.get("location").toLowerCase() === "on-air" ? "selected" : ""%>>On-Air</option>
           <option value="in-venue" <%= project.get("location").toLowerCase() === "in-venue" ? "selected" : ""%>>In-Venue</option>
         </select>
       </div>
 
+
       <div class="form-group">
-        <label for="project-use-case">Use Case</label>
-        <select multiple id="project-use-case">
+        <label for="industry">Industry</label>
+        <select class="form-control" id="industry">
+          <option value="Entertainment, Arts, & Recreation" <%= project.get("industry").toLowerCase() === "Entertainment, Arts, & Recreation" ? "selected" : "" %>>Entertainment, Arts, & Recreation</option>
+          <option value="Communication" <%= project.get("industry") === "Communication" ? "selected" : "" %>>Communication</option>
+          <option value="Retail" <%= project.get("industry") === "Retail" ? "selected" : "" %>>Retail</option>
+          <option value="Orgs, Groups, & Administrations" <%= project.get("industry") === "Orgs, Groups, & Administrations" ? "selected" : "" %>>Orgs, Groups, & Administrations</option>
+          <option value="Manufacturing" <%= project.get("industry") === "Manufacturing" ? "selected" : "" %>>Manufacturing</option>
+          <option value="Professional Teams" <%= project.get("industry") === "Professional Teams" ? "selected" : "" %>>Professional Teams</option>
+          <option value="Media & Entertainment" <%= project.get("industry") === "Media & Entertainment" ? "selected" : "" %>>Media & Entertainment</option>
+          <option value="Food & Beverage" <%= project.get("industry") === "Food & Beverage" ? "selected" : "" %>>Food & Beverage</option>
+          <option value="Agency & Business Services" <%= project.get("industry") === "Agency & Business Services" ? "selected" : "" %>>Agency & Business Services</option>
+          <option value="Mass Relevance Partner" <%= project.get("industry") === "Mass Relevance Partner" ? "selected" : "" %>>Mass Relevance Partner</option>
+          <option value="Other" <%= project.get("industry") === "Other" ? "selected" : "" %>>Other</option>
+          <option value="Hospitality & Travel" <%= project.get("industry") === "Hospitality & Travel" ? "selected" : "" %>>Hospitality & Travel</option>
+          <option value="Collegiate Athletics" <%= project.get("industry") === "Collegiate Athletics" ? "selected" : "" %>>Collegiate Athletics</option>
+          <option value="Professional Sports Teams, Clubs, & Organizations" <%= project.get("industry") === "Professional Sports Teams, Clubs, & Organizations" ? "selected" : "" %>>Professional Sports Teams, Clubs, & Organizations</option>
+          <option value="Groups & Organizations" <%= project.get("industry") === "Groups & Organizations" ? "selected" : "" %>>Groups & Organizations</option>
+          <option value="Accommodation & Food Services" <%= project.get("industry") === "Accommodation & Food Services" ? "selected" : "" %>>Accommodation & Food Services</option>
+          <option value="Hospitality" <%= project.get("industry") === "Hospitality" ? "selected" : "" %>>Hospitality</option>
+          <option value="Professional Leagues & Associations" <%= project.get("industry") === "Professional Leagues & Associations" ? "selected" : "" %>>Professional Leagues & Associations</option>
+          <option value="Media" <%= project.get("industry") === "Media" ? "selected" : "" %>>Media</option>
+          <option value="Finance & Insurance" <%= project.get("industry") === "Finance & Insurance" ? "selected" : "" %>>Finance & Insurance</option>
+          <option value="Sports" <%= project.get("industry") === "Sports" ? "selected" : "" %>>Sports</option>
+          <option value="Technology" <%= project.get("industry") === "Technology" ? "selected" : "" %>>Technology</option>
+          <option value="Insurance" <%= project.get("industry") === "Insurance" ? "selected" : "" %>>Insurance</option>
+          <option value="Financial Services" <%= project.get("industry") === "Financial Services" ? "selected" : "" %>>Financial Services</option>
+          <option value="Entertainment" <%= project.get("industry") === "Entertainment" ? "selected" : "" %>>Entertainment</option>
+          <option value="Agency" <%= project.get("industry") === "Agency" ? "selected" : "" %>>Agency</option>
+          <option value="Education" <%= project.get("industry") === "Education" ? "selected" : "" %>>Education</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="use_case">Use Case</label>
+        <select multiple id="use_case">
           <option value="marketing promotion" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "marketing promotion" ) ? "selected" : "" %>>marketing promotion</option>
           <option value="second screen" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "second screen" ) ? "selected" : "" %>>second screen</option>
           <option value="sponsorship" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "sponsorship" ) ? "selected" : "" %>>sponsorship</option>
@@ -99,8 +133,8 @@
 
 
       <div class="form-group">
-        <label for="template-group-select">Template Group</label>
-        <select multiple id="template-group-select">
+        <label for="template_group">Template Group</label>
+        <select multiple id="template_group">
           <option value="Maps" <%= _.contains(project.get("template_group").split(", "), "Maps" ) ? "selected" : "" %>>Maps</option>
           <option value="Streams" <%= _.contains(project.get("template_group").split(", "), "Streams" ) ? "selected" : "" %>>Streams</option>
           <option value="Expressions" <%= _.contains(project.get("template_group").split(", "), "Expressions" ) ? "selected" : "" %>>Expressions</option>
@@ -121,8 +155,8 @@
 
 
       <div class="form-group">
-        <label for="project-template-select">Template</label>
-        <select multiple id="project-template-select">
+        <label for="template">Template</label>
+        <select multiple id="template">
 
           <option value="Activity Map (World)" <%= _.contains(project.get("template").split(", "), "Activity Map (World)") ? "selected" : "" %>>Activity Map (World)</option>
           <option value="Spotlight" <%= _.contains(project.get("template").split(", "), "Spotlight") ? "selected" : "" %>>Spotlight</option>
@@ -175,47 +209,8 @@
           <option value="Mosaic (Mural)" <%= _.contains(project.get("template").split(", "), "Mosaic (Mural)") ? "selected" : "" %>>Mosaic (Mural)</option>
         </select>
       </div>
-
-
-
-
-
-
-      <div class="form-group">
-        <label for="project-industry">Industry</label>
-        <select class="form-control" id="project-industry">
-          <option value="Entertainment, Arts, & Recreation" <%= project.get("industry").toLowerCase() === "Entertainment, Arts, & Recreation" ? "selected" : "" %>>Entertainment, Arts, & Recreation</option>
-          <option value="Communication" <%= project.get("industry") === "Communication" ? "selected" : "" %>>Communication</option>
-          <option value="Retail" <%= project.get("industry") === "Retail" ? "selected" : "" %>>Retail</option>
-          <option value="Orgs, Groups, & Administrations" <%= project.get("industry") === "Orgs, Groups, & Administrations" ? "selected" : "" %>>Orgs, Groups, & Administrations</option>
-          <option value="Manufacturing" <%= project.get("industry") === "Manufacturing" ? "selected" : "" %>>Manufacturing</option>
-          <option value="Professional Teams" <%= project.get("industry") === "Professional Teams" ? "selected" : "" %>>Professional Teams</option>
-          <option value="Media & Entertainment" <%= project.get("industry") === "Media & Entertainment" ? "selected" : "" %>>Media & Entertainment</option>
-          <option value="Food & Beverage" <%= project.get("industry") === "Food & Beverage" ? "selected" : "" %>>Food & Beverage</option>
-          <option value="Agency & Business Services" <%= project.get("industry") === "Agency & Business Services" ? "selected" : "" %>>Agency & Business Services</option>
-          <option value="Mass Relevance Partner" <%= project.get("industry") === "Mass Relevance Partner" ? "selected" : "" %>>Mass Relevance Partner</option>
-          <option value="Other" <%= project.get("industry") === "Other" ? "selected" : "" %>>Other</option>
-          <option value="Hospitality & Travel" <%= project.get("industry") === "Hospitality & Travel" ? "selected" : "" %>>Hospitality & Travel</option>
-          <option value="Collegiate Athletics" <%= project.get("industry") === "Collegiate Athletics" ? "selected" : "" %>>Collegiate Athletics</option>
-          <option value="Professional Sports Teams, Clubs, & Organizations" <%= project.get("industry") === "Professional Sports Teams, Clubs, & Organizations" ? "selected" : "" %>>Professional Sports Teams, Clubs, & Organizations</option>
-          <option value="Groups & Organizations" <%= project.get("industry") === "Groups & Organizations" ? "selected" : "" %>>Groups & Organizations</option>
-          <option value="Accommodation & Food Services" <%= project.get("industry") === "Accommodation & Food Services" ? "selected" : "" %>>Accommodation & Food Services</option>
-          <option value="Hospitality" <%= project.get("industry") === "Hospitality" ? "selected" : "" %>>Hospitality</option>
-          <option value="Professional Leagues & Associations" <%= project.get("industry") === "Professional Leagues & Associations" ? "selected" : "" %>>Professional Leagues & Associations</option>
-          <option value="Media" <%= project.get("industry") === "Media" ? "selected" : "" %>>Media</option>
-          <option value="Finance & Insurance" <%= project.get("industry") === "Finance & Insurance" ? "selected" : "" %>>Finance & Insurance</option>
-          <option value="Sports" <%= project.get("industry") === "Sports" ? "selected" : "" %>>Sports</option>
-          <option value="Technology" <%= project.get("industry") === "Technology" ? "selected" : "" %>>Technology</option>
-          <option value="Insurance" <%= project.get("industry") === "Insurance" ? "selected" : "" %>>Insurance</option>
-          <option value="Financial Services" <%= project.get("industry") === "Financial Services" ? "selected" : "" %>>Financial Services</option>
-          <option value="Entertainment" <%= project.get("industry") === "Entertainment" ? "selected" : "" %>>Entertainment</option>
-          <option value="Agency" <%= project.get("industry") === "Agency" ? "selected" : "" %>>Agency</option>
-          <option value="Education" <%= project.get("industry") === "Education" ? "selected" : "" %>>Education</option>
-        </select>
-      </div>
-
-
-
+      <br>
+      <input type="submit" value="Update" class="btn btn-large btn-primary">
     </form>
   </div>
 </div>

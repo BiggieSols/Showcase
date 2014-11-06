@@ -17,3 +17,10 @@
     <% }) %>
   </div>
 </div>
+<% if(adminMode) { %>
+<div class="edit-link">
+  <a href="<%= "#/projects/" + this.model.id + "/edit" %>">
+    <i class="icon-pencil"></i> edit
+  </a>
+</div>
+<% } %>

@@ -28,6 +28,7 @@ Showcase.Routers.Router = Backbone.Router.extend({
     var adminCombo = [83, 80, 82, 69, 68, 70, 65, 83, 84, 65, 68, 77, 73, 78];
     var currIdx = 0;
     var nextKey; 
+    var that = this;
     $(document).keydown(function(e) {
       nextKey = adminCombo[currIdx];
         if (e.keyCode == nextKey) {
@@ -35,6 +36,10 @@ Showcase.Routers.Router = Backbone.Router.extend({
           if(currIdx == adminCombo.length) {
             alert("admin mode activated");
             Showcase.adminMode = true;
+            if(that.currentView) {
+              // refresh the view
+              that._swapView(that.currentView);
+            }
           }
         } else {
           currIdx = 0;

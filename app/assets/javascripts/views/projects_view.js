@@ -63,7 +63,7 @@ Showcase.Views.ProjectsView = Backbone.View.extend({
 
   _nextPage: function () {
     var that = this;
-    if ($(window).scrollTop() > $(document).height() - $(window).height() - 100) {
+    if ($(window).scrollTop() > $(document).height() - $(window).height() - 300) {
       this._renderProjects();
     }
   },

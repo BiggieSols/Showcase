@@ -1,6 +1,6 @@
 .project-tile {
-  height: 375px;
-  width: 400px;
+  height: 325px;
+  width: 350px;
   margin: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -41,8 +41,8 @@
   }
 
   .tile-img {
-    width: 400px;
-    height: 208px;
+    width: 350px;
+    height: 175px;
     overflow: hidden;
 
     img {
@@ -67,7 +67,7 @@
     text-transform: capitalize;
 
     div{
-      margin-bottom: 5px;
+      margin-bottom: 2px;
     }
   }
 }

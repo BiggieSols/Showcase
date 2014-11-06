@@ -9,14 +9,20 @@ body {
   text-align: center;
   margin-bottom: 5%;
 
-  h1{
-    background-color: #fff;
+  h1,h2{
     font-family: "Adelle",Helvetica,Arial,sans-serif;
-  }
-
-  h2 {
-    background-color: #fff;
-    font-family: "Adelle",Helvetica,Arial,sans-serif;
+    font-weight: normal;
   }
 }
 
+.header{
+    padding: 5px 0;
+
+    img {width:100px;}
+}
+.subheader {
+    padding: 3px 0;
+    background-color: #f2f2f2;
+
+    h1{font-size:2.25em;}
+}

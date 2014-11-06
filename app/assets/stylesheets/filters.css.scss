@@ -1,7 +1,7 @@
 .filters {
-    background-color: #ddd;
-    color: #333;
-    padding: 20px 0 20px 0;
+    background-color: #1a7293;
+    color: #fff;
+    padding: 20px 0 10px 0;
     margin-bottom: 20px;
 }
 
@@ -10,21 +10,54 @@
   max-width: 100%;
 
   .select2-choices {
-    border-radius: 5px;
+    border-radius: 3px;
+    min-height: 40px;
+
+    .select2-search-choice {
+      color: #fff;
+      padding: 10px 10px 10px 20px;
+      margin: 3px 0 3px 5px;
+      position: relative;
+      line-height: 13px;
+      cursor: default;
+      border: none;
+      border-radius: 2px;
+      text-transform: uppercase;
+      font-size: .85em;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      background-color: lighten(#1a7293,35%);
+      background-image:none;
+
+      .select2-search-choice-close{
+        left: 5px;
+        top: 10px;
+      }
+    }
   }
 }
+
+
+
 
 .form-group {
   max-width: 20%;
   display: inline-block;
+
+  label{
+    font-size:1em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding-bottom: 5px;
+  }
 }
 
 .fixed-top {
   position: fixed;
-  color: #333;
+  color: #fff;
   top: 0;
   padding-top: 17px;
-  background-color: #ddd;
+  background-color: #1a7293;
   z-index: 1;
   box-shadow: 0 0 2px #ddd;
   width: 100%;

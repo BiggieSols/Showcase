@@ -1,6 +1,6 @@
 <form>
   <div class="form-group">
-    <label for="vertical-select">Vertical</label>
+    <label for="vertical-select">Filter by vertical:</label>
     <select multiple id="vertical-select">
       <option value="sports">Sports</option>
       <option value="brand">Brand</option>
@@ -9,7 +9,7 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="use-case-select">Use Case</label>
+    <label for="use-case-select">Filter by use case:</label>
     <select multiple id="use-case-select">
       <option value="marketing promotion">Marketing Promotion</option>
       <option value="second screen">Second Screen</option>
@@ -28,7 +28,7 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="template-group-select">Template Type</label>
+    <label for="template-group-select">Filter by template:</label>
     <select multiple id="template-group-select">
       <option value="Mosaic">Mosaic</option>
       <option value="Expressions">Expressions</option>
@@ -46,7 +46,7 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="project-name-select">Project Name</label>
+    <label for="project-name-select">Search project name:</label>
     <select multiple id="project-name-select">
       <% projects.forEach(function(model) { %>
       <option value="<%= model.get("viz_name") %>">

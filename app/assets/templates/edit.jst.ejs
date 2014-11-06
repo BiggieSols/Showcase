@@ -1,10 +1,227 @@
 PROJECT EDIT GOES HERE
 
+<% Object.keys(project.attributes).forEach(function(key) { %>
+<div>
+  <%= key %>: <%= project.get(key) %>
+</div>
+
+<% }); %>
+
+<div class="row">
 <form>
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="<%= project.get("viz_name") %>">
+  <div class="input-group col-xs-12 col-sm-4 col-md-3 col-lg-2">
+    <label for="project-name">Title</label>
+    <input type="text" class="form-control" value="<%= project.get("viz_name") %>" id="project-name">
   </div>
+
+  <div class="input-group" >
+    <label for="project-visible">Display This Project?</label>
+    <select class="form-control" id="project-visible">
+      <option value="true" <%= project.get("visible") ? "selected" : ""%>>Yes</option>
+      <option value="false" <%= !project.get("visible") ? "selected" : ""%> >No</option>
+    </select>
+  </div>
+
+  <div class="input-group" >
+    <label for="project-live">Live Status</label>
+    <select class="form-control" id="project-live">
+      <option value="true" <%= project.get("live") ? "selected" : ""%>>Live</option>
+      <option value="false" <%= !project.get("live") ? "selected" : ""%> >Disabled</option>
+    </select>
+  </div>
+
+  <div class="input-group" >
+    <label for="project-subscription">Project / Subscription</label>
+    <select class="form-control" id="project-subscription">
+      <option value="true" <%= project.get("subscription") ? "selected" : ""%>>Subscription</option>
+      <option value="false" <%= !project.get("subscription") ? "selected" : ""%> >Project</option>
+    </select>
+  </div>
+
+  <div class="input-group" >
+    <label for="project-region">Region</label>
+    <select class="form-control" id="project-region">
+      <option value="EMEA" <%= (project.get("region") === "EMEA") ? "selected" : ""%>>EMEA</option>
+      <option value="NA East" <%= (project.get("region") === "NA East") ? "selected" : ""%>>NA East</option>
+      <option value="NA Central" <%= (project.get("region") === "NA Central") ? "selected" : ""%>>NA Central</option>
+      <option value="Asia Pacific" <%= (project.get("region") === "Asia Pacific") ? "selected" : ""%>>Asia Pacific</option>
+      <option value="NA Media" <%= (project.get("region") === "NA Media") ? "selected" : ""%>>NA Media</option>
+      <option value="NA West" <%= (project.get("region") === "NA West") ? "selected" : ""%>>NA West</option>
+      <option value="NA Sports" <%= (project.get("region") === "NA Sports") ? "selected" : ""%>>NA Sports</option>
+      <option value="Unknown" <%= (project.get("region") === "Unknown") ? "selected" : ""%>>Unknown</option>
+      <option value="NA Digital" <%= (project.get("region") === "NA Digital") ? "selected" : ""%>>NA Digital</option>
+      <option value="Latin America" <%= (project.get("region") === "Latin America") ? "selected" : ""%>>Latin America"</option>
+    </select>
+  </div>
+
+  <div class="input-group" >
+    <label for="project-link">Link</label>
+    <input type="text" class="form-control" value="<%= project.get("link") %>" id="project-link">
+  </div>
+
+  <div class="input-group" >
+    <label for="project-vertical">Vertical</label>
+    <select class="form-control" id="project-vertical">
+      <option value="sports" <%= project.get("vertical").toLowerCase() === "sports" ? "selected" : ""%> >Sports</option>
+      <option value="brand" <%= project.get("vertical").toLowerCase() === "brand" ? "selected" : ""%>>Brand</option>
+      <option value="media" <%= project.get("vertical").toLowerCase() === "media" ? "selected" : ""%>>Media</option>
+      <option value="partner" <%= project.get("vertical").toLowerCase() === "partner" ? "selected" : ""%>>Partner</option>
+    </select>
+  </div>
+
+  <div class="input-group" >
+    <label for="project-location">Location</label>
+    <select class="form-control" id="project-location">
+      <option value="digital" <%= project.get("location").toLowerCase() === "digital" ? "selected" : ""%> >Digital</option>
+      <option value="on-air" <%= project.get("location").toLowerCase() === "on-air" ? "selected" : ""%>>On-Air</option>
+      <option value="in-venue" <%= project.get("location").toLowerCase() === "in-venue" ? "selected" : ""%>>In-Venue</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="project-use-case">Use Case</label>
+    <select multiple id="project-use-case">
+<option value="marketing promotion" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "marketing promotion" ) ? "selected" : "" %>>marketing promotion</option>
+<option value="second screen" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "second screen" ) ? "selected" : "" %>>second screen</option>
+<option value="sponsorship" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "sponsorship" ) ? "selected" : "" %>>sponsorship</option>
+<option value="evergreen destination" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "evergreen destination" ) ? "selected" : "" %>>evergreen destination</option>
+<option value="cause marketing" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "cause marketing" ) ? "selected" : "" %>>cause marketing</option>
+<option value="event engagement" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "event engagement" ) ? "selected" : "" %>>event engagement</option>
+<option value="contest" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "contest" ) ? "selected" : "" %>>contest</option>
+<option value="sweepstakes" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "sweepstakes" ) ? "selected" : "" %>>sweepstakes</option>
+<option value="event promotion" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "event promotion" ) ? "selected" : "" %>>event promotion</option>
+<option value="product promotion" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "product promotion" ) ? "selected" : "" %>>product promotion</option>
+<option value="product launch" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "product launch" ) ? "selected" : "" %>>product launch</option>
+<option value="rebranding" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "rebranding" ) ? "selected" : "" %>>rebranding</option>
+<option value="live q&a" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "live q&a" ) ? "selected" : "" %>>live q&a</option>
+<option value="consent" <%= _.contains(project.get("use_case").toLowerCase().split(", "), "consent" ) ? "selected" : "" %>>consent</option>
+    </select>
+  </div>
+
+
+  <div class="form-group">
+    <label for="template-group-select">Template Group</label>
+    <select multiple id="template-group-select">
+<option value="Maps" <%= _.contains(project.get("template_group").split(", "), "Maps" ) ? "selected" : "" %>>Maps</option>
+<option value="Streams" <%= _.contains(project.get("template_group").split(", "), "Streams" ) ? "selected" : "" %>>Streams</option>
+<option value="Expressions" <%= _.contains(project.get("template_group").split(", "), "Expressions" ) ? "selected" : "" %>>Expressions</option>
+<option value="Leaderboards" <%= _.contains(project.get("template_group").split(", "), "Leaderboards" ) ? "selected" : "" %>>Leaderboards</option>
+<option value="Counters" <%= _.contains(project.get("template_group").split(", "), "Counters" ) ? "selected" : "" %>>Counters</option>
+<option value="Polls" <%= _.contains(project.get("template_group").split(", "), "Polls" ) ? "selected" : "" %>>Polls</option>
+<option value="Mosaic" <%= _.contains(project.get("template_group").split(", "), "Mosaic" ) ? "selected" : "" %>>Mosaic</option>
+<option value="Galleries" <%= _.contains(project.get("template_group").split(", "), "Galleries" ) ? "selected" : "" %>>Galleries</option>
+<option value="Q & A" <%= _.contains(project.get("template_group").split(", "), "Q & A" ) ? "selected" : "" %>>Q & A</option>
+<option value="Social Hub" <%= _.contains(project.get("template_group").split(", "), "Social Hub" ) ? "selected" : "" %>>Social Hub</option>
+<option value="Flock to Unlock" <%= _.contains(project.get("template_group").split(", "), "Flock to Unlock" ) ? "selected" : "" %>>Flock to Unlock</option>
+<option value="Counter" <%= _.contains(project.get("template_group").split(", "), "Counter" ) ? "selected" : "" %>>Counter</option>
+<option value="Quiz" <%= _.contains(project.get("template_group").split(", "), "Quiz" ) ? "selected" : "" %>>Quiz</option>
+    </select>
+  </div>
+
+
+
+
+  <div class="form-group">
+    <label for="project-template-select">Template</label>
+    <select multiple id="project-template-select">
+
+<option value="Activity Map (World)" <%= _.contains(project.get("template").split(", "), "Activity Map (World)") ? "selected" : "" %>>Activity Map (World)</option>
+<option value="Spotlight" <%= _.contains(project.get("template").split(", "), "Spotlight") ? "selected" : "" %>>Spotlight</option>
+<option value="Fill in the Blank" <%= _.contains(project.get("template").split(", "), "Fill in the Blank") ? "selected" : "" %>>Fill in the Blank</option>
+<option value="Leaderboard (Top Topics)" <%= _.contains(project.get("template").split(", "), "Leaderboard (Top Topics)") ? "selected" : "" %>>Leaderboard (Top Topics)</option>
+<option value="Counter" <%= _.contains(project.get("template").split(", "), "Counter") ? "selected" : "" %>>Counter</option>
+<option value="Poll (Video)" <%= _.contains(project.get("template").split(", "), "Poll (Video)") ? "selected" : "" %>>Poll (Video)</option>
+<option value="Multi-Topic Timeline (Dropdown)" <%= _.contains(project.get("template").split(", "), "Multi-Topic Timeline (Dropdown)") ? "selected" : "" %>>Multi-Topic Timeline (Dropdown)</option>
+<option value="Mosaic (Content)" <%= _.contains(project.get("template").split(", "), "Mosaic (Content)") ? "selected" : "" %>>Mosaic (Content)</option>
+<option value="Poll (Tug of War)" <%= _.contains(project.get("template").split(", "), "Poll (Tug of War)") ? "selected" : "" %>>Poll (Tug of War)</option>
+<option value="Activity Map (USA)" <%= _.contains(project.get("template").split(", "), "Activity Map (USA)") ? "selected" : "" %>>Activity Map (USA)</option>
+<option value="Media Wall" <%= _.contains(project.get("template").split(", "), "Media Wall") ? "selected" : "" %>>Media Wall</option>
+<option value="Timeline" <%= _.contains(project.get("template").split(", "), "Timeline") ? "selected" : "" %>>Timeline</option>
+<option value="Leaderboard (Top Influencers)" <%= _.contains(project.get("template").split(", "), "Leaderboard (Top Influencers)") ? "selected" : "" %>>Leaderboard (Top Influencers)</option>
+<option value="Q & A" <%= _.contains(project.get("template").split(", "), "Q & A") ? "selected" : "" %>>Q & A</option>
+<option value="Activity Map (Australia)" <%= _.contains(project.get("template").split(", "), "Activity Map (Australia)") ? "selected" : "" %>>Activity Map (Australia)</option>
+<option value="Poll (Image)" <%= _.contains(project.get("template").split(", "), "Poll (Image)") ? "selected" : "" %>>Poll (Image)</option>
+<option value="Mosaic (Carousel)" <%= _.contains(project.get("template").split(", "), "Mosaic (Carousel)") ? "selected" : "" %>>Mosaic (Carousel)</option>
+<option value="Mosaic (Waterfall)" <%= _.contains(project.get("template").split(", "), "Mosaic (Waterfall)") ? "selected" : "" %>>Mosaic (Waterfall)</option>
+<option value="Activity Map (France)" <%= _.contains(project.get("template").split(", "), "Activity Map (France)") ? "selected" : "" %>>Activity Map (France)</option>
+<option value="Poll (Button)" <%= _.contains(project.get("template").split(", "), "Poll (Button)") ? "selected" : "" %>>Poll (Button)</option>
+<option value="Social Hub" <%= _.contains(project.get("template").split(", "), "Social Hub") ? "selected" : "" %>>Social Hub</option>
+<option value="Flock to Unlock" <%= _.contains(project.get("template").split(", "), "Flock to Unlock") ? "selected" : "" %>>Flock to Unlock</option>
+<option value="Horizontal Progress Bar" <%= _.contains(project.get("template").split(", "), "Horizontal Progress Bar") ? "selected" : "" %>>Horizontal Progress Bar</option>
+<option value="Photo Scrubber" <%= _.contains(project.get("template").split(", "), "Photo Scrubber") ? "selected" : "" %>>Photo Scrubber</option>
+<option value="Live Votes" <%= _.contains(project.get("template").split(", "), "Live Votes") ? "selected" : "" %>>Live Votes</option>
+<option value="Spotlight (Venue)" <%= _.contains(project.get("template").split(", "), "Spotlight (Venue)") ? "selected" : "" %>>Spotlight (Venue)</option>
+<option value="Retail Photo Wall" <%= _.contains(project.get("template").split(", "), "Retail Photo Wall") ? "selected" : "" %>>Retail Photo Wall</option>
+<option value="Dynamic Leaderboard" <%= _.contains(project.get("template").split(", "), "Dynamic Leaderboard") ? "selected" : "" %>>Dynamic Leaderboard</option>
+<option value="Hash Clash" <%= _.contains(project.get("template").split(", "), "Hash Clash") ? "selected" : "" %>>Hash Clash</option>
+<option value="Poll (Bullet)" <%= _.contains(project.get("template").split(", "), "Poll (Bullet)") ? "selected" : "" %>>Poll (Bullet)</option>
+<option value="Poll (Twitter)" <%= _.contains(project.get("template").split(", "), "Poll (Twitter)") ? "selected" : "" %>>Poll (Twitter)</option>
+<option value="Mosaic (Content) Media Wall" <%= _.contains(project.get("template").split(", "), "Mosaic (Content) Media Wall") ? "selected" : "" %>>Mosaic (Content) Media Wall</option>
+<option value="Poll (Checkbox)" <%= _.contains(project.get("template").split(", "), "Poll (Checkbox)") ? "selected" : "" %>>Poll (Checkbox)</option>
+<option value="Activity Map (Canada)" <%= _.contains(project.get("template").split(", "), "Activity Map (Canada)") ? "selected" : "" %>>Activity Map (Canada)</option>
+<option value="Leaderboard (Top Hashtags)" <%= _.contains(project.get("template").split(", "), "Leaderboard (Top Hashtags)") ? "selected" : "" %>>Leaderboard (Top Hashtags)</option>
+<option value="Quiz" <%= _.contains(project.get("template").split(", "), "Quiz") ? "selected" : "" %>>Quiz</option>
+<option value="Activity Map (North America)" <%= _.contains(project.get("template").split(", "), "Activity Map (North America)") ? "selected" : "" %>>Activity Map (North America)</option>
+<option value="Media Gallery" <%= _.contains(project.get("template").split(", "), "Media Gallery") ? "selected" : "" %>>Media Gallery</option>
+<option value="Q&A" <%= _.contains(project.get("template").split(", "), "Q&A") ? "selected" : "" %>>Q&A</option>
+<option value="Leaderboard (Top Tweets)" <%= _.contains(project.get("template").split(", "), "Leaderboard (Top Tweets)") ? "selected" : "" %>>Leaderboard (Top Tweets)</option>
+<option value="Avatar Wall" <%= _.contains(project.get("template").split(", "), "Avatar Wall") ? "selected" : "" %>>Avatar Wall</option>
+<option value="Dynamic Trends" <%= _.contains(project.get("template").split(", "), "Dynamic Trends") ? "selected" : "" %>>Dynamic Trends</option>
+<option value="Heat Gauge" <%= _.contains(project.get("template").split(", "), "Heat Gauge") ? "selected" : "" %>>Heat Gauge</option>
+<option value="Polls (Image)" <%= _.contains(project.get("template").split(", "), "Polls (Image)") ? "selected" : "" %>>Polls (Image)</option>
+<option value="Word Cloud" <%= _.contains(project.get("template").split(", "), "Word Cloud") ? "selected" : "" %>>Word Cloud</option>
+<option value="Activity Map (South America)" <%= _.contains(project.get("template").split(", "), "Activity Map (South America)") ? "selected" : "" %>>Activity Map (South America)</option>
+<option value="Leaderboard (Top Trending)" <%= _.contains(project.get("template").split(", "), "Leaderboard (Top Trending)") ? "selected" : "" %>>Leaderboard (Top Trending)</option>
+<option value="Mosaic (Dynamic)" <%= _.contains(project.get("template").split(", "), "Mosaic (Dynamic)") ? "selected" : "" %>>Mosaic (Dynamic)</option>
+<option value="Mosaic (Mural)" <%= _.contains(project.get("template").split(", "), "Mosaic (Mural)") ? "selected" : "" %>>Mosaic (Mural)</option>
+</select>
+</div>
+
+
+
+
+
+
+  <div class="input-group">
+    <label for="project-industry">Industry</label>
+    <select class="form-control" id="project-industry">
+      <option value="Entertainment, Arts, & Recreation" <%= project.get("industry").toLowerCase() === "Entertainment, Arts, & Recreation" ? "selected" : "" %>>Entertainment, Arts, & Recreation</option>
+      <option value="Communication" <%= project.get("industry") === "Communication" ? "selected" : "" %>>Communication</option>
+      <option value="Retail" <%= project.get("industry") === "Retail" ? "selected" : "" %>>Retail</option>
+      <option value="Orgs, Groups, & Administrations" <%= project.get("industry") === "Orgs, Groups, & Administrations" ? "selected" : "" %>>Orgs, Groups, & Administrations</option>
+      <option value="Manufacturing" <%= project.get("industry") === "Manufacturing" ? "selected" : "" %>>Manufacturing</option>
+      <option value="Professional Teams" <%= project.get("industry") === "Professional Teams" ? "selected" : "" %>>Professional Teams</option>
+      <option value="Media & Entertainment" <%= project.get("industry") === "Media & Entertainment" ? "selected" : "" %>>Media & Entertainment</option>
+      <option value="Food & Beverage" <%= project.get("industry") === "Food & Beverage" ? "selected" : "" %>>Food & Beverage</option>
+      <option value="Agency & Business Services" <%= project.get("industry") === "Agency & Business Services" ? "selected" : "" %>>Agency & Business Services</option>
+      <option value="Mass Relevance Partner" <%= project.get("industry") === "Mass Relevance Partner" ? "selected" : "" %>>Mass Relevance Partner</option>
+      <option value="Other" <%= project.get("industry") === "Other" ? "selected" : "" %>>Other</option>
+      <option value="Hospitality & Travel" <%= project.get("industry") === "Hospitality & Travel" ? "selected" : "" %>>Hospitality & Travel</option>
+      <option value="Collegiate Athletics" <%= project.get("industry") === "Collegiate Athletics" ? "selected" : "" %>>Collegiate Athletics</option>
+      <option value="Professional Sports Teams, Clubs, & Organizations" <%= project.get("industry") === "Professional Sports Teams, Clubs, & Organizations" ? "selected" : "" %>>Professional Sports Teams, Clubs, & Organizations</option>
+      <option value="Groups & Organizations" <%= project.get("industry") === "Groups & Organizations" ? "selected" : "" %>>Groups & Organizations</option>
+      <option value="Accommodation & Food Services" <%= project.get("industry") === "Accommodation & Food Services" ? "selected" : "" %>>Accommodation & Food Services</option>
+      <option value="Hospitality" <%= project.get("industry") === "Hospitality" ? "selected" : "" %>>Hospitality</option>
+      <option value="Professional Leagues & Associations" <%= project.get("industry") === "Professional Leagues & Associations" ? "selected" : "" %>>Professional Leagues & Associations</option>
+      <option value="Media" <%= project.get("industry") === "Media" ? "selected" : "" %>>Media</option>
+      <option value="Finance & Insurance" <%= project.get("industry") === "Finance & Insurance" ? "selected" : "" %>>Finance & Insurance</option>
+      <option value="Sports" <%= project.get("industry") === "Sports" ? "selected" : "" %>>Sports</option>
+      <option value="Technology" <%= project.get("industry") === "Technology" ? "selected" : "" %>>Technology</option>
+      <option value="Insurance" <%= project.get("industry") === "Insurance" ? "selected" : "" %>>Insurance</option>
+      <option value="Financial Services" <%= project.get("industry") === "Financial Services" ? "selected" : "" %>>Financial Services</option>
+      <option value="Entertainment" <%= project.get("industry") === "Entertainment" ? "selected" : "" %>>Entertainment</option>
+      <option value="Agency" <%= project.get("industry") === "Agency" ? "selected" : "" %>>Agency</option>
+      <option value="Education" <%= project.get("industry") === "Education" ? "selected" : "" %>>Education</option>
+    </select>
+  </div>
+
+
+
 </form>
+</div>
 
 
-"live", "region", "link", "screenshot", "vertical", "industry", "use_case", "viz_name", "subscription", "location", "template_group", "record_created", "end_date", "story_slide", "visible"
+
+
+
+<!-- "live", "region", "link", "screenshot", "vertical", "industry", "use_case", "viz_name", "subscription", "location", "template_group", "record_created", "end_date", "story_slide", "visible" -->

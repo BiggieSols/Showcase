@@ -17,27 +17,27 @@
   overflow: hidden;
 
   &:nth-child(6n) {
-    border-top: 8px solid orange;
+    border-top: 8px solid #f26522;
   }
 
   &:nth-child(6n+1) {
-    border-top: 8px solid green;
+    border-top: 8px solid #b1c537;
   }
 
   &:nth-child(6n+2) {
-    border-top: 8px solid tomato;
+    border-top: 8px solid #D73D32;
   }
 
   &:nth-child(6n+3) {
-    border-top: 8px solid purple;
+    border-top: 8px solid #652a79;
   }
 
   &:nth-child(6n+4) {
-    border-top: 8px solid gray;
+    border-top: 8px solid #cccccc;
   }
 
   &:nth-child(6n+5) {
-    border-top: 8px solid blue;
+    border-top: 8px solid #3bbbef;
   }
 
   .tile-img {

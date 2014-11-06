@@ -9,9 +9,15 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
-*= require bootstrap_and_overrides
+ *= require bootstrap_and_overrides
  *= require select2
  *= require select2-bootstrap
  *= require_tree .
  */
 
+
+@import 'body';
+@import 'bootstrap_and_overrides';
+@import 'filters';
+@import 'project_tiles';
+@import 'variables';

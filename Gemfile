@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+ source 'https://rubygems.org'
 
 gem 'rails', '3.2.15'
 
@@ -23,7 +23,7 @@ end
 gem 'jquery-rails'
 
 gem "less-rails"
-gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
+gem 'twitter-bootstrap-rails'
 
 
 # To use ActiveModel has_secure_password
